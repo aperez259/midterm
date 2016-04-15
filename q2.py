@@ -46,7 +46,6 @@ def subtractSticks( number ):
 
 
 def determineComputerChoice():
-    import random
     ComputerPick = random.randint(1,4) #this will make the computer pick a random number between 1-4
     return ComputerPick #this returns the randpm number that the computer picked.
 
