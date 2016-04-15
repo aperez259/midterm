@@ -27,7 +27,7 @@ def askUserChoice():
         YourPick = int(input("Enter your choice: "))
         if YourPick in range (1,5):  #determines if the number the player picked is a valid number.
             print("You have removed", YourPick, "sticks") 
-            return YourPick #if a valid number was chosen, it ends the loop
+            return YourPick #if a valid number was chosen, it returns the player's pick
 
         else: #if the player enters an invalid number, this message will keep looping untill they enter a valid number.
             print ("You entered an invalid choice. Please remove 1-4 sticks") 
@@ -36,7 +36,7 @@ def askUserChoice():
        
 def subtractSticks( number ):
     global sticks
-    sticks -= number # thissubtracts the number parameter, which are the number choice and computer choice), from the global vlue sticks.
+    sticks -= number # this subtracts the number parameter, which are the number choice and computer choice), from the global vlue sticks.
 
 
     if sticks <= 0: #if the total value in sticks reaches zero or below, it returns true.
@@ -48,5 +48,5 @@ def subtractSticks( number ):
 def determineComputerChoice():
     import random
     ComputerPick = random.randint(1,4) #this will make the computer pick a random number between 1-4
-    return ComputerPick 
+    return ComputerPick #this returns the randpm number that the computer picked.
 
