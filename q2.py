@@ -1,3 +1,4 @@
+import random
 sticks = 21
 
 def playGame():
@@ -7,41 +8,45 @@ def playGame():
     while True:
         print('Current sticks: ' + str(sticks))
         userChoice = askUserChoice()
-        
-        sticks -= askUserChoice.userChoice #subtracts the sticks that the player removed
-        if sticks <= 0: #checks to see if there are 0 sticks left and if so, prints out a 'you lost' message
-            print('You lost!')
+        if subtractSticks( userChoice ):
+            print('You lost!') 
             break
         
         computerChoice = determineComputerChoice()
-        print('Computer picked: ' + str(determineComputerChoice.computerChoice))
-
-        sticks -= determineComputerChoice.computerChoice #subtracts the sticks that the computer removed
-        if sticks <= 0: #checks to see if there are 0 sticks left and if so, prints out a 'computer lost' message
+        print('Computer picked: ' + str(computerChoice) )
+        if subtractSticks( computerChoice ):
             print('Computer lost!')
             break
-        
 
 def askUserChoice():
+
+    YourChoice = ''
     
- while True:         
+    while True:
         print("How many sticks do you want to pick up? (1-4)")
-        askUserChoice.userChoice = int(input("Enter your choice: ")) #
-        if askUserChoice.userChoice >=1 and askUserChoice.userChoice <= 4:  #determines if the number the player picked is a valid number.
-            print("You have removed", askUserChoice.userChoice, "sticks") #if a valid number was chosen, it ends the loop
-            break
+        YourPick = int(input("Enter your choice: "))
+        if YourPick in range (1,5):  #determines if the number the player picked is a valid number.
+            print("You have removed", YourPick, "sticks") 
+            return YourPick #if a valid number was chosen, it ends the loop
+
         else: #if the player enters an invalid number, this message will keep looping untill they enter a valid number.
             print ("You entered an invalid choice. Please remove 1-4 sticks") 
 
 
        
-def subtractSticks( number ): # moved subtract sticks within the playGame function.
+def subtractSticks( number ):
     global sticks
- 
+    sticks -= number # thissubtracts the number parameter, which are the number choice and computer choice), from the global vlue sticks.
+
+
+    if sticks <= 0: #if the total value in sticks reaches zero or below, it returns true.
+        return True
+    else: # if the value of sticks remains above 0, then the it returns false.
+        return False
 
 
 def determineComputerChoice():
     import random
-    determineComputerChoice.computerChoice = random.randint(1,4) #this will make the computer pick a random number between 1-4
-
+    ComputerPick = random.randint(1,4) #this will make the computer pick a random number between 1-4
+    return ComputerPick 
 
